@@ -1,3 +1,4 @@
+/*
 import wollok.game.*
 
 import example.pepita
@@ -16,3 +17,4 @@ program PepitaGame {
 
 	game.start()
 }
+*/

@@ -1,0 +1,11 @@
+
+import autos.*
+import dependencias.*
+
+describe "group of tests for municipalidad" {
+
+  test "description" {
+    var cachito = corsa
+    cachito.informarColor("rojo")
+  }
+}
