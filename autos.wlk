@@ -1,5 +1,5 @@
 import dependencias.*
-object corsa {
+class Corsa {
   var color = null
 
   method capacidad() = 4
@@ -13,7 +13,7 @@ object corsa {
   method informarColor(unColor) {color = unColor}
 }
 
-object kwid {
+class Kwid {
   var property tieneTanque = false
 
   const peso = 1200
@@ -27,7 +27,7 @@ object kwid {
   method color() = "azul"
 }
 
-object trafic {
+class Trafic {
   var property interiorActual = comodo
   var property motorActual = pulenta
   const peso = 4000
@@ -65,7 +65,7 @@ object trafic {
     method peso() = 500
   }
 
-object autosEspeciales {
+class AutosEspeciales {
   var property capacidad = null
 
   var property velocidadMaxima = null
