@@ -19,4 +19,8 @@ class Dependencias {
   method capacidadFaltante() = empleados - self.capacidadTotal()
 
   method esGrande() = flotaDeRodados.size() >= 5 and empleados >= 40
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2ffa5998ca3eb7bea8c2a341a3b6033786f87ca9
