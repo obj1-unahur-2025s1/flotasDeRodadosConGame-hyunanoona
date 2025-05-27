@@ -1,12 +1,12 @@
 import autos.*
 class Dependencia {
   var empleados 
-
   const flotaDeRodados = #{}
+  const pedidos = #{}
 
-  method agregarAFlota(rodado) = flotaDeRodados.add(rodado)
+  method agregarAFlota(rodado) {flotaDeRodados.add(rodado)}
 
-  method quitarDeFlota(rodado) = flotaDeRodados.add(rodado)
+  method quitarDeFlota(rodado) {flotaDeRodados.add(rodado)}
 
   method pesoTotal() = flotaDeRodados.sum{r => r.peso()}
 
@@ -21,4 +21,18 @@ class Dependencia {
   method capacidadFaltante() = empleados - self.capacidadTotal()
 
   method esGrande() = flotaDeRodados.size() >= 5 and empleados >= 40
+
+  method agregarPedido(unPedido) {pedidos.add(unPedido)}
+
+  method quitarPedido(unPedido) {pedidos.remove(unPedido)}
+
+  method totalDePasajerosEnLosPedidos() = pedidos.sum{p => p.cantidadDePasajeros()}
+
+  method algunoPuedeSatisfacerElPedido(unPedido) = flotaDeRodados.any{r => unPedido.puedeSatisfacer(r)}
+
+  method pedidosQueNoSePuedenSatisfacer() = pedidos.filter{p => not self.algunoPuedeSatisfacerElPedido(p)}
+
+  method noEsCompatibleParaTodosLosPedidos(unColor) = pedidos.all{p => p.coloresIncompatibles().contains(unColor)}
+
+  method relajarTodos() = pedidos.forEach{p => p.relajar()}
 }

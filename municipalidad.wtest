@@ -95,4 +95,10 @@ describe "group of tests for municipalidad" {
   test "cachito no puede satisfacer el pedido 2" {
     assert.notThat(pedido2.puedeSatisfacer(cachito))
   }
+
+  test "todos los pedidos de deportes tienen dentro de sus colores incompatibles al negro" {
+    deportes.agregarPedido(pedido1)
+    deportes.agregarPedido(pedido2)
+    assert.that(deportes.noEsCompatibleParaTodosLosPedidos(negro))
+  }
 }

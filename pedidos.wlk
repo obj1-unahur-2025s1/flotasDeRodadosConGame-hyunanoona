@@ -13,6 +13,10 @@ class Pedido{
         coloresIncompatibles.contains{unAuto.color()}
     }
 
+    method cantidadDePasajeros() = cantidadDePasajeros
+
+    method coloresIncompatibles() = coloresIncompatibles
+
     method acelerar(){tiempoMaximo -= 1}
 
     method relajar(){tiempoMaximo += 1} 
