@@ -1,6 +1,6 @@
 import dependencias.*
 class Corsa {
-  var color = null
+  var color
 
   method capacidad() = 4
   
@@ -9,13 +9,10 @@ class Corsa {
   method peso() = 1300
 
   method color() = color
-
-  method informarColor(unColor) {color = unColor}
 }
 
 class Kwid {
-  var property tieneTanque = false
-
+  var tieneTanque
   const peso = 1200
 
   method capacidad() = if(tieneTanque) 3 else 4
@@ -24,21 +21,21 @@ class Kwid {
 
   method peso() = if(tieneTanque) peso + 150 else peso 
 
-  method color() = "azul"
+  method color() = azul
 }
 
 class Trafic {
-  var property interiorActual = comodo
-  var property motorActual = pulenta
+  var interior 
+  var motor
   const peso = 4000
 
-  method capacidad() = interiorActual.capacidad()
+  method capacidad() = interior.capacidad()
 
-  method velocidadMaxima() = motorActual.velocidadMaxima()
+  method velocidadMaxima() = motor.velocidadMaxima()
 
-  method peso() = peso + interiorActual.peso() + motorActual.peso()
+  method peso() = peso + interior.peso() + motor.peso()
 
-  method color() = "blanco"
+  method color() = blanco
 }
 
   object comodo {
@@ -65,12 +62,31 @@ class Trafic {
     method peso() = 500
   }
 
-class AutosEspeciales {
-  var property capacidad = null
+class AutoEspecial {
+  var capacidad 
+  var velocidadMaxima
+  var peso
+  var color 
 
-  var property velocidadMaxima = null
+  method capacidad() = capacidad
 
-  var property peso = null
+  method velocidadMaxima() = velocidadMaxima
 
-  var property color = null 
+  method peso() = peso
+
+  method color() = color
 }
+
+// colores 
+
+object rojo {}
+
+object verde {}
+
+object blanco {}
+
+object azul {}
+
+object beige {}
+
+object negro {}

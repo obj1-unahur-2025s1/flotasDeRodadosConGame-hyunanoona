@@ -1,9 +1,98 @@
-
 import autos.*
 import dependencias.*
+import pedidos.*
 
 describe "group of tests for municipalidad" {
 
-  test "description" {
+  var deportes = new Dependencia(empleados = 45)
+  var cultura = new Dependencia(empleados = 31)
+
+  var cachito = new Corsa(color = rojo)
+
+  var corsaAzul = new Corsa(color = azul)
+  var corsaVerde = new Corsa(color = verde)
+  var kwidTA1 = new Kwid(tieneTanque = true)
+  var autoEs1 = new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color = beige)
+
+  var kwidTA2 = new Kwid(tieneTanque = true)
+  var kwidTA3 = new Kwid(tieneTanque = true)
+  var kwid1 = new Kwid(tieneTanque = false)
+  var trafic1 = new Trafic(interior = popular, motor = bataton)
+
+  var pedido1 = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajeros = 4, coloresIncompatibles = [azul, negro])
+  var pedido2 = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajeros = 6, coloresIncompatibles = [azul, negro, rojo])
+
+  method initialize(){
+    deportes.agregarAFlota(cachito)
+    deportes.agregarAFlota(corsaAzul)
+    deportes.agregarAFlota(corsaVerde)
+    deportes.agregarAFlota(kwidTA1)
+    deportes.agregarAFlota(autoEs1)
+
+    cultura.agregarAFlota(cachito)
+    cultura.agregarAFlota(kwidTA2)
+    cultura.agregarAFlota(kwidTA3)
+    cultura.agregarAFlota(kwid1)
+    cultura.agregarAFlota(trafic1)
+  }
+
+  //deportes
+  test "el peso total de la flota es de 6450" {
+    assert.equals(6450, deportes.pesoTotal())
+  }
+
+  test "la flota de deportes esta bien equipada" {
+    assert.that(deportes.estaBienEquipada())
+  }
+
+  test "la capacidad total en color azul es de 7" {
+    assert.equals(7, deportes.capacidadTotalEnColor(azul))
+  }
+
+  test "el color del rodado mas rapido es beige" {
+    assert.equals(beige, deportes.colorDelRodadoMasRapido())
+  }
+
+  test "la flota de deportes es grande" {
+    assert.that(deportes.esGrande())
+  }
+
+  test "la capacidad faltante es de 25" {
+    assert.equals(25, deportes.capacidadFaltante())
+  }
+
+  //cultura
+  test "el peso total de la flota es de 10700" {
+    assert.equals(10700, cultura.pesoTotal())
+  }
+  
+  test "la flota de cultura no esta bien equipada" {
+    assert.notThat(cultura.estaBienEquipada())
+  }
+
+  test "la capacidad total en color azul es de 10" {
+    assert.equals(10, cultura.capacidadTotalEnColor(azul))
+  }
+
+  test "el color del rodado mas rapido es rojo" {
+    assert.equals(rojo, cultura.colorDelRodadoMasRapido())
+  }
+
+  test "la flota de cultura no es grande" {
+    assert.notThat(cultura.esGrande())
+  }
+
+  test "la capacidad faltante es de 5" {
+    assert.equals(5, cultura.capacidadFaltante())
+  }
+
+  //pedidos
+
+  test "cachito puede satisfacer el pedido 1" {
+    assert.that(pedido1.puedeSatisfacer(cachito))
+  }
+
+  test "cachito no puede satisfacer el pedido 2" {
+    assert.notThat(pedido2.puedeSatisfacer(cachito))
   }
 }
