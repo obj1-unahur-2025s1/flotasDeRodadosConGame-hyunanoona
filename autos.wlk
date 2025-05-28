@@ -1,6 +1,6 @@
 import dependencias.*
 class Corsa {
-  var color
+  var property color
 
   method capacidad() = 4
   
@@ -8,7 +8,9 @@ class Corsa {
 
   method peso() = 1300
 
-  method color() = color
+  method initialize() {
+    if (not colores.validos().contains(color)) self.error(color.toString() + " no es un color valido")
+  }
 }
 
 class Kwid {
@@ -24,9 +26,9 @@ class Kwid {
   method color() = azul
 }
 
-class Trafic {
-  var interior 
-  var motor
+object trafic {
+  var interior = null
+  var motor = null
   const peso = 4000
 
   method capacidad() = interior.capacidad()
@@ -36,6 +38,10 @@ class Trafic {
   method peso() = peso + interior.peso() + motor.peso()
 
   method color() = blanco
+
+  method asignarInterior(unInterior) {interior = unInterior}
+
+  method asignarMotor(unMotor) {motor = unMotor}
 }
 
   object comodo {
@@ -78,6 +84,9 @@ class AutoEspecial {
 }
 
 // colores 
+object colores {
+  method validos() = #{rojo, verde, blanco, azul, beige, negro} 
+}
 
 object rojo {}
 

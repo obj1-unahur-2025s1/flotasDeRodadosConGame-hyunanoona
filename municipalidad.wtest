@@ -17,7 +17,6 @@ describe "group of tests for municipalidad" {
   var kwidTA2 = new Kwid(tieneTanque = true)
   var kwidTA3 = new Kwid(tieneTanque = true)
   var kwid1 = new Kwid(tieneTanque = false)
-  var trafic1 = new Trafic(interior = popular, motor = bataton)
 
   var pedido1 = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajeros = 4, coloresIncompatibles = [azul, negro])
   var pedido2 = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajeros = 6, coloresIncompatibles = [azul, negro, rojo])
@@ -29,11 +28,12 @@ describe "group of tests for municipalidad" {
     deportes.agregarAFlota(kwidTA1)
     deportes.agregarAFlota(autoEs1)
 
+    trafic.asignarInterior(popular)
+    trafic.asignarMotor(bataton)
     cultura.agregarAFlota(cachito)
     cultura.agregarAFlota(kwidTA2)
     cultura.agregarAFlota(kwidTA3)
     cultura.agregarAFlota(kwid1)
-    cultura.agregarAFlota(trafic1)
   }
 
   //deportes
@@ -62,12 +62,12 @@ describe "group of tests for municipalidad" {
   }
 
   //cultura
-  test "el peso total de la flota es de 10700" {
-    assert.equals(10700, cultura.pesoTotal())
+  test "el peso total de la flota es de 5200" {
+    assert.equals(5200, cultura.pesoTotal())
   }
   
-  test "la flota de cultura no esta bien equipada" {
-    assert.notThat(cultura.estaBienEquipada())
+  test "la flota de cultura esta bien equipada" {
+    assert.that(cultura.estaBienEquipada())
   }
 
   test "la capacidad total en color azul es de 10" {
@@ -82,8 +82,8 @@ describe "group of tests for municipalidad" {
     assert.notThat(cultura.esGrande())
   }
 
-  test "la capacidad faltante es de 5" {
-    assert.equals(5, cultura.capacidadFaltante())
+  test "la capacidad faltante es de 17" {
+    assert.equals(17, cultura.capacidadFaltante())
   }
 
   //pedidos
